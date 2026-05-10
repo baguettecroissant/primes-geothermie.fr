@@ -135,18 +135,18 @@ function buildPricingContext(city: City, pop: number, climateLabel: string): str
     const region = city.region;
     
     if (pop > 200000) {
-        return `En tant que métropole, ${city.name} présente des tarifs d'installation géothermique parmi les plus élevés du ${dept}. Les contraintes logistiques (accès chantier, autorisations de voirie, voisinage) génèrent un surcoût de 15 à 25% par rapport à la moyenne nationale. Cependant, la densité d'installateurs certifiés en ${region} permet de négocier et d'obtenir des devis compétitifs. Le captage vertical est quasi-systématique en raison de la taille réduite des terrains. Les aides financières (MaPrimeRénov' + CEE) compensent efficacement ce surcoût : le reste à charge après aides reste dans la moyenne nationale.`;
+        return `À ${city.name}, le reste à charge après aides pour une installation géothermique s'établit entre 10 000 et 22 000€ — malgré des coûts d'installation parmi les plus élevés du ${dept} (25 000-38 000€). Les aides nationales (MaPrimeRénov' 3 000-11 000€ + CEE 2 500-5 000€ + TVA 5,5%) compensent une large part du surcoût métropolitain. L'éco-PTZ permet de lisser ce reste à charge en mensualités de 80 à 150€ sur 20 ans — souvent inférieur à l'ancienne facture de gaz.`;
     }
     if (pop > 50000) {
-        return `À ${city.name}, les tarifs d'installation géothermique sont légèrement supérieurs à la moyenne du ${dept}, avec un surcoût de 5 à 15% lié aux contraintes urbaines. En ${region}, zone ${climateLabel.toLowerCase()}, le réseau d'installateurs RGE est suffisamment dense pour maintenir une concurrence saine. Le choix entre captage vertical et horizontal dépend de votre terrain — les deux solutions sont régulièrement mises en œuvre. Profitez de la présence de plusieurs professionnels pour comparer les offres et les technologies proposées (PAC sol-eau, eau-eau, avec ou sans géocooling).`;
+        return `À ${city.name}, les aides couvrent 35 à 55% du coût total d'installation géothermique. En ${region}, zone ${climateLabel.toLowerCase()}, le reste à charge s'établit entre 8 000 et 18 000€ pour un projet de 20 000-30 000€. Le cumul MaPrimeRénov' + CEE + TVA 5,5% atteint 9 000 à 15 000€ selon votre profil de revenus. L'éco-PTZ sur 20 ans génère une mensualité de 50 à 100€ — bien inférieure aux économies de chauffage réalisées.`;
     }
     if (pop > 10000) {
-        return `${city.name} bénéficie de tarifs proches de la moyenne nationale pour l'installation géothermique. En ${region}, ${climateLabel.toLowerCase()}, les installateurs du ${dept} proposent des prix compétitifs grâce à des conditions de chantier favorables (accès terrain, espace disponible). Le rapport qualité-prix est optimal dans les villes de cette taille : vous bénéficiez de l'expertise des professionnels tout en évitant les surcoûts métropolitains.`;
+        return `Le reste à charge après aides à ${city.name} est de 6 000 à 15 000€ pour une installation de 18 000-28 000€. Le rapport aides/investissement est optimal dans le ${dept} en ${region} : coûts d'installation proches de la moyenne nationale + aides identiques partout en France. L'amortissement après aides est de 4 à 8 ans. L'éco-PTZ finance la totalité du reste à charge sans intérêts.`;
     }
     if (pop > 2000) {
-        return `Dans les communes comme ${city.name}, les prix sont souvent plus avantageux que dans les grandes villes du ${dept}. Les installateurs locaux en ${region} proposent des tarifs 5 à 15% inférieurs à la moyenne nationale, avec l'avantage d'un suivi de proximité. Le captage horizontal, possible sur les terrains spacieux de cette commune, permet de réduire encore le budget de 3 000 à 5 000€ par rapport au forage vertical.`;
+        return `Dans les communes comme ${city.name}, le reste à charge après aides est parmi les plus bas du ${dept} : 4 000 à 12 000€ pour un budget de 15 000-22 000€. Les profils MaPrimeRénov' Bleu et Jaune (revenus modestes) bénéficient du meilleur taux de subvention — jusqu'à 60% du coût total. En ${region}, les installateurs RGE intègrent les aides dans leurs devis pour une transparence totale.`;
     }
-    return `En commune rurale comme ${city.name}, vous bénéficiez des tarifs les plus compétitifs du ${dept} pour la géothermie. Les foreurs locaux en ${region} proposent des prix attractifs, et la disponibilité foncière permet d'opter pour le captage horizontal — la solution la plus économique. Le principal poste de coût à anticiper est le déplacement du foreur si aucun professionnel n'est basé à proximité immédiate (surcoût de 500 à 1 000€).`;
+    return `En commune rurale comme ${city.name}, le cumul des aides est le plus avantageux du ${dept}. Le profil de revenus souvent modeste (Bleu/Jaune) ouvre droit aux montants MaPrimeRénov' les plus élevés (9 000-11 000€). Sur un budget de 13 000-20 000€, le reste à charge peut descendre sous 5 000€. En ${region}, les CEE "Coup de Pouce Chauffage" ajoutent 4 000-5 000€ en remplacement du fioul — le scénario le plus fréquent en zone rurale.`;
 }
 
 function buildFaq(city: City, pop: number, saisonTravaux: string): FaqItem[] {
@@ -155,49 +155,50 @@ function buildFaq(city: City, pop: number, saisonTravaux: string): FaqItem[] {
 
     return [
         {
-            question: `Combien coûte une installation géothermique à ${city.name} ?`,
-            answer: pop > 200000
-                ? `À ${city.name}, le prix moyen d'une installation géothermique complète (forage + PAC + raccordements) se situe entre 18 000€ et 35 000€. Les tarifs sont 15 à 25% supérieurs à la moyenne nationale en raison des contraintes logistiques métropolitaines. Après déduction des aides (MaPrimeRénov' + CEE), le reste à charge descend entre 8 000€ et 20 000€.`
-                : pop > 50000
-                    ? `À ${city.name}, le prix moyen d'une installation géothermique complète se situe entre 15 000€ et 30 000€. Les tarifs sont proches de la moyenne nationale. Après déduction des aides financières (MaPrimeRénov' jusqu'à 11 000€ + CEE jusqu'à 4 000€), le reste à charge est de 6 000€ à 18 000€.`
-                    : pop > 10000
-                        ? `À ${city.name}, le prix moyen d'une installation géothermique se situe entre 14 000€ et 28 000€, conforme à la moyenne nationale. Les installateurs locaux et les réseaux de marques proposent des tarifs compétitifs. Avec les aides, le reste à charge peut descendre sous 10 000€.`
-                        : `À ${city.name}, le prix moyen d'une installation géothermique se situe entre 13 000€ et 25 000€. Les tarifs sont légèrement inférieurs à la moyenne nationale. Le captage horizontal, possible si vous disposez de terrain, réduit le coût de 3 000 à 5 000€ par rapport au forage vertical.`
-        },
-        {
-            question: `Quel type de captage géothermique choisir à ${city.name} ?`,
-            answer: pop > 50000
-                ? `À ${city.name}, le captage vertical par sondes géothermiques (80-150 m de profondeur) est le plus courant car il ne nécessite que peu d'espace. Si votre terrain le permet et que le sous-sol est favorable dans le ${dept}, le captage horizontal (nappe de collecteurs à 1,2 m de profondeur) est 30 à 40% moins cher. L'aquathermie (sur nappe phréatique) est aussi envisageable selon la ressource en eau locale.`
-                : `À ${city.name}, le choix entre captage vertical et horizontal dépend de votre terrain. Le captage horizontal nécessite une surface libre de 1,5 à 2 fois la surface habitable. Le captage vertical (sondes de 80-150 m) s'adapte à tous les terrains mais coûte 3 000 à 5 000€ de plus. Un foreur qualifié dans le ${dept} vous conseillera après étude du sol.`
-        },
-        {
-            question: `La géothermie est-elle rentable à ${city.name} ?`,
-            answer: `Oui, la géothermie est le système de chauffage le plus rentable à long terme à ${city.name}. ${saisonTravaux} En remplacement du fioul, l'économie annuelle atteint 1 500 à 2 000€/an. En remplacement du gaz, 800 à 1 200€/an. L'amortissement est de 8 à 12 ans, et la durée de vie du système dépasse 25 ans (50 ans pour les sondes).`
-        },
-        {
             question: `Quelles aides pour la géothermie à ${city.name} en 2026 ?`,
-            answer: `Les aides financières pour la géothermie à ${city.name} (${dept}) sont les plus généreuses du secteur de la rénovation énergétique : MaPrimeRénov' (jusqu'à 11 000€ pour les ménages très modestes), Certificats d'Économies d'Énergie – CEE (jusqu'à 4 000€), TVA réduite à 5,5%, éco-PTZ (jusqu'à 50 000€ à taux zéro), et éventuellement des aides locales du département ${dept} ou de la région ${region}. Au total, jusqu'à 15 000€ d'aides cumulables.`
+            answer: pop > 200000
+                ? `À ${city.name}, les aides pour la géothermie en 2026 : MaPrimeRénov' (3 000 à 11 000€ selon revenus), CEE Coup de Pouce (2 500 à 5 000€), TVA à 5,5% (économie de 3 000-5 000€), éco-PTZ (jusqu'à 50 000€ à 0%), et aides de la métropole (500 à 2 000€). Total cumulable : jusqu'à 20 000€. Les Espaces France Rénov' du ${dept} proposent une simulation personnalisée gratuite.`
+                : pop > 50000
+                    ? `À ${city.name}, le cumul des aides 2026 : MaPrimeRénov' (3 000-11 000€), CEE (2 500-4 000€), TVA 5,5%, éco-PTZ (jusqu'à 50 000€). Total : jusqu'à 15 000€ d'aides. Le reste à charge est de 6 000 à 18 000€. L'espace France Rénov' du ${dept} accompagne gratuitement le montage du dossier.`
+                    : pop > 10000
+                        ? `À ${city.name}, les aides couvrent 35-55% du coût : MaPrimeRénov' (5 000-11 000€ pour les modestes), CEE (2 500-4 000€), TVA 5,5% et éco-PTZ. Le reste à charge descend entre 6 000 et 14 000€. Consultez l'ADIL du ${dept} pour les éventuelles aides locales complémentaires.`
+                        : `À ${city.name}, les aides sont parmi les plus avantageuses : MaPrimeRénov' (9 000-11 000€ pour les ménages modestes/très modestes), CEE Coup de Pouce fioul (jusqu'à 5 000€), TVA 5,5% et éco-PTZ. Le reste à charge peut descendre sous 5 000€ dans le ${dept}.`
         },
         {
-            question: `Faut-il une autorisation pour un forage géothermique à ${city.name} ?`,
-            answer: `Oui, tout forage géothermique à ${city.name} nécessite une déclaration préalable auprès de la DREAL (formulaire en ligne sur le site du BRGM). Pour les forages de moins de 10 m, une simple déclaration suffit. Pour les forages de plus de 10 m (sondes verticales), un dossier plus complet est requis avec un délai de traitement de 1 à 2 mois dans le ${dept}. Votre installateur RGE se charge généralement des formalités.`
-        },
-        {
-            question: `Combien de temps durent les travaux de géothermie à ${city.name} ?`,
+            question: `Quel est le reste à charge après aides à ${city.name} ?`,
             answer: pop > 50000
-                ? `À ${city.name}, comptez 4 à 7 jours ouvrés pour l'ensemble du chantier (forage + installation PAC + raccordements). Le forage vertical dure 1 à 2 jours, la pose de la PAC et les raccordements hydrauliques/électriques 2 à 3 jours. En zone urbaine, les autorisations administratives peuvent ajouter 1 à 2 mois de délai. Planifiez votre projet 3 à 4 mois avant la saison de chauffe.`
-                : `À ${city.name}, comptez 3 à 5 jours ouvrés pour l'installation complète. Le forage vertical dure 1 à 2 jours, le captage horizontal 2 à 3 jours. La mise en service est immédiate après le raccordement. Prévoyez 2 à 3 mois entre le premier devis et le début des travaux.`
+                ? `Le reste à charge après toutes les aides à ${city.name} dépend de votre profil MaPrimeRénov' : Profil Bleu (très modeste) = 5 000-12 000€, Profil Jaune (modeste) = 7 000-15 000€, Profil Violet (intermédiaire) = 12 000-20 000€, Profil Rose (supérieur) = 16 000-25 000€. Ces montants sont finançables en totalité par l'éco-PTZ à taux zéro sur 15-20 ans.`
+                : `Le reste à charge à ${city.name} est parmi les plus bas du ${dept} grâce aux coûts d'installation compétitifs : Profil Bleu = 3 000-8 000€, Profil Jaune = 5 000-11 000€, Profil Violet = 8 000-15 000€. L'éco-PTZ transforme ce reste en mensualités de 30 à 80€/mois — bien inférieures aux économies de chauffage réalisées.`
         },
         {
-            question: `Quelle est la durée de vie d'une installation géothermique à ${city.name} ?`,
-            answer: `Une installation géothermique à ${city.name} a une durée de vie exceptionnelle. La pompe à chaleur (PAC) fonctionne 25 à 30 ans avec un entretien annuel (150 à 300€/an). Les sondes géothermiques enterrées dans le sous-sol du ${dept} durent 50 ans et plus — elles survivent à la PAC et peuvent être réutilisées lors d'un remplacement. C'est un investissement patrimonial qui se transmet avec la maison.`
+            question: `Comment fonctionne MaPrimeRénov' pour la géothermie à ${city.name} ?`,
+            answer: `MaPrimeRénov' à ${city.name} finance votre PAC géothermique selon vos revenus : Bleu = 11 000€, Jaune = 9 000€, Violet = 5 000€, Rose = 3 000€. ${saisonTravaux} Condition obligatoire : faire appel à un installateur RGE certifié QualiPAC dans le ${dept}. Créez votre dossier sur maprimerenov.gouv.fr AVANT de signer le devis. Le versement intervient 4-8 semaines après la fin des travaux.`
         },
         {
-            question: `La géothermie fonctionne-t-elle aussi pour le rafraîchissement à ${city.name} ?`,
-            answer: `Oui, la géothermie offre le "géocooling" : en été, la température du sous-sol à ${city.name} (12-14°C) est naturellement inférieure à la température extérieure. La PAC géothermique réversible peut rafraîchir votre logement à moindre coût — bien moins cher qu'une climatisation classique. En ${region}, cette double fonction chauffage/rafraîchissement accélère le retour sur investissement de votre installation.`
+            question: `Peut-on cumuler MaPrimeRénov' et l'éco-PTZ à ${city.name} ?`,
+            answer: `Oui, le cumul MaPrimeRénov' + éco-PTZ est non seulement possible mais recommandé à ${city.name}. L'éco-PTZ (jusqu'à 50 000€ à taux zéro sur 20 ans) finance le reste à charge après déduction de MaPrimeRénov' et des CEE. Aucune condition de revenus pour l'éco-PTZ — seule condition : logement de plus de 2 ans. Demandez l'éco-PTZ à votre banque du ${dept} avec l'attestation RGE de l'installateur.`
+        },
+        {
+            question: `Quels sont les CEE pour la géothermie à ${city.name} ?`,
+            answer: `Les Certificats d'Économies d'Énergie (CEE) à ${city.name} (${dept}) s'élèvent à 2 500-5 000€ pour une PAC géothermique. Le montant varie selon l'obligé (EDF, Engie, TotalEnergies, Leclerc Energies). Le dispositif "Coup de Pouce Chauffage" majore les CEE jusqu'à 5 000€ en remplacement d'une chaudière fioul. Les CEE sont déduits directement de la facture par l'installateur RGE en ${region}.`
+        },
+        {
+            question: `La géothermie est-elle finançable sans apport à ${city.name} ?`,
+            answer: pop > 50000
+                ? `Oui, la géothermie est finançable à 100% sans apport à ${city.name}. Le montage type : MaPrimeRénov' couvre 15-40% du coût, les CEE déduisent 10-15% de la facture, et l'éco-PTZ finance le solde à taux zéro sur 20 ans. Résultat : 0€ d'apport personnel. La mensualité éco-PTZ (50-120€/mois) est inférieure aux économies de chauffage (100-180€/mois). Vous gagnez de l'argent dès le premier mois.`
+                : `Oui, la géothermie est accessible sans apport à ${city.name}. Avec le cumul MaPrimeRénov' + CEE + éco-PTZ, vous ne versez aucun apport initial. L'installateur RGE du ${dept} avance le montant des CEE et déduit la TVA 5,5%. Votre mensualité éco-PTZ est souvent inférieure à votre ancienne facture de chauffage.`
+        },
+        {
+            question: `Quelles aides locales pour la géothermie dans le ${dept} ?`,
+            answer: `En plus des aides nationales, le département ${dept} et la région ${region} peuvent proposer des compléments : subventions départementales (500-2 000€), aides communales ou intercommunales (500-1 500€), et programmes régionaux spécifiques. Consultez l'ADIL du ${dept} ou l'Espace France Rénov' le plus proche pour un inventaire complet des aides locales disponibles à ${city.name}. Ces aides sont cumulables avec MaPrimeRénov' et les CEE.`
+        },
+        {
+            question: `En combien de temps les aides sont-elles versées à ${city.name} ?`,
+            answer: `À ${city.name}, les délais de versement 2026 : MaPrimeRénov' = 4 à 8 semaines après réception de la facture de fin de travaux, CEE = déduits immédiatement de la facture (ou versés sous 2-4 semaines selon l'obligé), TVA 5,5% = appliquée directement sur la facture, éco-PTZ = déblocage bancaire sous 15-30 jours après signature. Les installateurs RGE du ${dept} gèrent les démarches MaPrimeRénov' comme mandataires.`
         },
     ];
 }
+
 
 // Helper: find nearby cities from the same department
 export function findNearbyCities(allCities: City[], currentCity: City, limit: number = 8): City[] {
