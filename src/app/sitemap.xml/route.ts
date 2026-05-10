@@ -10,7 +10,7 @@ function getAllDepartmentCodes(): string[] {
 }
 
 export async function GET() {
-    const baseUrl = 'https://www.cout-geothermie.fr';
+    const baseUrl = 'https://www.primes-geothermie.fr';
     const departmentCodes = getAllDepartmentCodes();
 
     const sitemaps = [
